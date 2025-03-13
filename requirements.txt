@@ -12,7 +12,7 @@ google-auth-oauthlib
 
 nest_asyncio 
 numpy 
-openai
+openai==0.28
 torch
 faiss-cpu
 unstructured[all-docs]
