@@ -2,7 +2,6 @@ import torch
 import openai
 import os
 from config import OPENAI_API_KEY, EMBEDDING_CACHE_FILE
-from utils.similarity_utils import calculate_similarity
 
 openai.api_key = OPENAI_API_KEY
 device = "cpu"
@@ -18,13 +17,6 @@ def get_openai_embedding(text):
     except Exception as e:
         print(f"임베딩 생성 오류: {e}")
         return None
-
-def load_cached_embeddings():
-    if os.path.exists(EMBEDDING_CACHE_FILE):
-        data = torch.load(EMBEDDING_CACHE_FILE, map_location="cpu")
-        return data
-    else:
-        return {}
 
 def update_embedding_cache(model_name, information):
     from config import EMBEDDING_CACHE_FILE

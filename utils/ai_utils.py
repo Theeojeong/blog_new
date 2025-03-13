@@ -1,4 +1,7 @@
-import openai
+from openai import OpenAI
+from config import OPENAI_API_KEY
+
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 def get_ai_suggested_titles(product_name, max_suggestions=4):
     """
@@ -9,7 +12,7 @@ def get_ai_suggested_titles(product_name, max_suggestions=4):
 '{product_name}'을 광고하고 사람들이 클릭하고 싶게 만드는 블로그 글 제목을 {max_suggestions}개 추천해줘.
 순수하게 제목만 남겨줘. 번호와 따옴표도 제거해줘.
 """
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="o1-mini",
         messages=[{"role":"user","content":prompt}]
     )

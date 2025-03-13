@@ -12,13 +12,13 @@ google-auth-oauthlib
 
 nest_asyncio 
 numpy 
-openai==0.28
+openai
 torch
 faiss-cpu
 unstructured[all-docs]
 
 streamlit 
 streamlit-tags 
-streamlit_quill 
+streamlit_quill
 streamlit-modal
 streamlit_extras

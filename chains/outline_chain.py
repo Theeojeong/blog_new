@@ -1,7 +1,8 @@
-import openai
+from openai import OpenAI
 from config import OPENAI_API_KEY
 
-openai.api_key = OPENAI_API_KEY
+client = OpenAI(api_key=OPENAI_API_KEY)
+
 
 def create_outline_with_additional_info(product_name, specs_info_list, blog_title, keywords):
     combined_info = ""
@@ -25,7 +26,7 @@ def create_outline_with_additional_info(product_name, specs_info_list, blog_titl
     그리고 블로그 seo 요소를 반영해줘.
     """
 
-    response = openai.ChatCompletion.create(
+    response = client.chat.ChatCompletion.create(
         model="o1-mini",
         messages=[
             {"role":"system","content":"너는 프로페셔널 광고성 블로그 글 기획자다."},

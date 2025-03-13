@@ -17,5 +17,3 @@ DB_CONFIG = {
     # 이모티콘(4바이트 문자)도 저장하기 위해 utf8mb4 권장
     "charset": "utf8mb4"
 }
-
-print("DB_NAME:", os.getenv("DB_NAME"))
