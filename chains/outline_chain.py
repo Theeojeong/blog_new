@@ -26,14 +26,12 @@ def create_outline_with_additional_info(product_name, specs_info_list, blog_titl
     그리고 블로그 seo 요소를 반영해줘.
     """
 
-    response = client.chat.ChatCompletion.create(
-        model="o1-mini",
-        messages=[
-            {"role":"system","content":"너는 프로페셔널 광고성 블로그 글 기획자다."},
-            {"role":"user","content": prompt}
-        ],
-        
-        max_tokens=3000
-    )
-    outline = response.choices[0].message.content
+    response = client.responses.create(
+    model="o1-preview",
+    instructions="너는 프로페셔널 광고성 블로그 글 기획자다.",
+    input=prompt,  # 실제 유저 질문/요청
+    max_tokens=3000,
+)
+    outline = response.output_text
+
     return outline, combined_info

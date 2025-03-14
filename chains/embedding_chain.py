@@ -1,18 +1,21 @@
+import httpx
 import torch
 import openai
 import os
+from openai import OpenAI
 from config import OPENAI_API_KEY, EMBEDDING_CACHE_FILE
 
-openai.api_key = OPENAI_API_KEY
+client = OpenAI(api_key=OPENAI_API_KEY)
+
 device = "cpu"
 
-def get_openai_embedding(text):
+def get_openai_embedding(text: str) -> torch.Tensor | None:
     try:
-        response = openai.Embedding.create(
+        response = client.embeddings.create(
             model="text-embedding-ada-002",
             input=[text]
         )
-        embedding = response["data"][0]["embedding"]
+        embedding = response.data[0].embedding
         return torch.tensor(embedding, device="cpu")
     except Exception as e:
         print(f"임베딩 생성 오류: {e}")
