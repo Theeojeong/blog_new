@@ -27,10 +27,10 @@ def create_outline_with_additional_info(product_name, specs_info_list, blog_titl
     """
 
     response = client.responses.create(
-    model="o1-preview",
+    model="o1",
     instructions="너는 프로페셔널 광고성 블로그 글 기획자다.",
     input=prompt,  # 실제 유저 질문/요청
-    max_tokens=3000,
+    max_output_tokens=3000,
 )
     outline = response.output_text
 
